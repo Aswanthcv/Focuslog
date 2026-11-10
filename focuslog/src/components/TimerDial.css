@@ -1,0 +1,243 @@
+.timer-dial {
+  align-items: center;
+  background: rgba(15, 22, 33, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  margin: 0.9rem auto 0;
+  max-width: 34rem;
+  padding: 2rem 1.75rem;
+  backdrop-filter: blur(16px);
+}
+
+.timer-durations,
+.timer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+}
+
+.duration-button,
+.custom-duration button,
+.timer-button {
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  padding: 0.62rem 0.9rem;
+  transition: all 180ms ease;
+}
+
+.duration-button {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text-soft);
+}
+
+.duration-button:hover,
+.custom-duration button:hover,
+.timer-button:hover,
+.session-modal-actions button:hover,
+.focus-rating-button:hover {
+  transform: translateY(-1px);
+}
+
+.duration-button.selected {
+  background: linear-gradient(135deg, var(--accent), #a09af3);
+  border-color: transparent;
+  box-shadow: 0 10px 28px rgba(141, 126, 247, 0.36);
+  color: #fff;
+}
+
+.custom-duration {
+  align-items: center;
+  color: var(--text-soft);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.custom-duration label {
+  font-size: 0.9rem;
+}
+
+.custom-duration input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  color: var(--text);
+  font: inherit;
+  padding: 0.7rem 0.8rem;
+  width: 6rem;
+}
+
+.custom-duration-help {
+  color: var(--muted);
+  flex-basis: 100%;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.custom-duration button,
+.timer-button.primary {
+  background: linear-gradient(135deg, var(--accent), #7fd7d8);
+  box-shadow: 0 12px 28px rgba(141, 126, 247, 0.3);
+  color: #fff;
+}
+
+.timer-ring {
+  align-items: center;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: min(46vh, 320px, 74vw);
+  filter: drop-shadow(0 0 24px rgba(141, 126, 247, 0.24));
+}
+
+.timer-ring-svg {
+  display: block;
+  height: 100%;
+  overflow: visible;
+  width: 100%;
+}
+
+.timer-ring-track,
+.timer-ring-progress {
+  fill: none;
+  stroke-width: 9;
+}
+
+.timer-ring-track {
+  stroke: rgba(255, 255, 255, 0.08);
+}
+
+.timer-ring-progress {
+  stroke: url(#timerGradient);
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 110px 110px;
+  transition: stroke-dashoffset 300ms linear;
+  animation: pulseRing 2.8s ease-in-out infinite alternate;
+}
+
+.timer-ring svg {
+  background: radial-gradient(circle, rgba(141, 126, 247, 0.14), transparent 62%);
+  border-radius: 50%;
+}
+
+.timer-time {
+  color: var(--text);
+  font-size: clamp(2.4rem, 12vw, 4rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  left: 50%;
+  letter-spacing: -0.06em;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.timer-sound-toggle {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-soft);
+  cursor: pointer;
+  display: inline-flex;
+  height: 2.6rem;
+  justify-content: center;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  width: 2.6rem;
+}
+
+.timer-sound-toggle:hover {
+  background: rgba(141, 126, 247, 0.16);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.timer-sound-toggle svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.timer-sound-toggle:focus-visible {
+  outline: 3px solid rgba(163, 221, 255, 0.8);
+  outline-offset: 3px;
+}
+
+.timer-button.secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.duration-button:disabled,
+.custom-duration button:disabled,
+.timer-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+}
+
+.duration-button:focus-visible,
+.custom-duration input:focus-visible,
+.custom-duration button:focus-visible,
+.timer-button:focus-visible {
+  outline: 3px solid rgba(163, 221, 255, 0.8);
+  outline-offset: 3px;
+}
+
+@keyframes pulseRing {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(141, 126, 247, 0.1));
+  }
+  100% {
+    filter: drop-shadow(0 0 16px rgba(111, 223, 211, 0.28));
+  }
+}
+
+@media (max-width: 600px) {
+  .timer-dial {
+    border-radius: 1.5rem;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .timer-durations,
+  .timer-controls {
+    gap: 0.5rem;
+  }
+
+  .duration-button,
+  .custom-duration button,
+  .timer-button {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .custom-duration {
+    gap: 0.55rem;
+  }
+
+  .custom-duration-help {
+    font-size: 0.72rem;
+  }
+
+  .timer-ring {
+    width: min(38vh, 280px, 72vw);
+  }
+
+  .timer-sound-toggle {
+    height: 2.25rem;
+    width: 2.25rem;
+  }
+}
