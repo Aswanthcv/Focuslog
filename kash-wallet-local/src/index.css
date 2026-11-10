@@ -1,0 +1,5 @@
+html, body, #root { max-width: 100%; overflow-x: hidden; }
+body { background-color: #f8f9fa; }
+.text-brand { color: #15803d; }
+.btn-brand { background-color: #15803d; border-color: #15803d; color: #fff; }
+.btn-brand:hover { background-color: #166534; border-color: #166534; color: #fff; }
